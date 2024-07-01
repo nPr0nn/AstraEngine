@@ -1,3 +1,18 @@
+
+# Zig compiler link
+zig
+
+# GLFW build files
+ext/glfw/zig-out
+ext/glfw/.zig-cache
+
+# Build files
+builds/cache-dir
+builds/linux
+builds/windows
+builds/web/*.wasm
+builds/web/*.js
+
 # Prerequisites
 *.d
 
