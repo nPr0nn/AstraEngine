@@ -6,6 +6,9 @@ zig
 ext/glfw/zig-out
 ext/glfw/.zig-cache
 
+# Emscripten build files 
+ext/emsdk
+
 # Build files
 builds/cache-dir
 builds/linux
