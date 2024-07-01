@@ -7,5 +7,6 @@ if [ "$#" -eq 0 ]; then
   
   exit 1
 elif [ "$1" == "web" ]; then
-  echo "Building web version..."
+  source ext/emsdk/emsdk_env.sh
+  make
 fi
