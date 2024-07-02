@@ -19,7 +19,13 @@ typedef struct EngineContext {
   f32 curr_time;
   f32 prev_time;
   f32 delta_time;
+
+  f32 angle; 
   
+  // quad
+  u32 VAO, VBO, EBO;
+  u32 shaderProgram;
+
 } EngineContext;
 
 #endif
