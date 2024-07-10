@@ -1,8 +1,6 @@
 #!/bin/bash
 
 if [ "$#" -eq 0 ]; then
-  echo "Building desktop version..."
-  echo "Running..."  
   make linux
   exit 1
   
