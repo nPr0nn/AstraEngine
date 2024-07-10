@@ -1,40 +1,43 @@
+
+#ifndef WEB
+#define GLFW_IMPL
+#endif
+
 #include "core.h"
 #include "engine/utils.h"
 #include <stdio.h>
 
 #ifdef WEB
 // WebGL Shader source code
-const char* vertexShaderSource = \
-"attribute vec3 aPos;\n" \
-"uniform mat4 model;\n" \
-"void main() {\n" \
-"    gl_Position = model * vec4(aPos, 1.0);\n" \
-"}\n";
+const char *vertexShaderSource = "attribute vec3 aPos;\n"
+                                 "uniform mat4 model;\n"
+                                 "void main() {\n"
+                                 "    gl_Position = model * vec4(aPos, 1.0);\n"
+                                 "}\n";
 
-const char* fragmentShaderSource = \
-"precision mediump float;\n" \
-"void main() {\n" \
-"    gl_FragColor = vec4(0.0, 0.5, 1.0, 1.0); // Blue color\n" \
-"}\n";
+const char *fragmentShaderSource =
+    "precision mediump float;\n"
+    "void main() {\n"
+    "    gl_FragColor = vec4(0.0, 0.5, 1.0, 1.0); // Blue color\n"
+    "}\n";
 
 #else
 // Desktop OpenGL Shader source code
-const char* vertexShaderSource = \
-"#version 330 core\n" \
-"layout(location = 0) in vec3 aPos;\n" \
-"uniform mat4 model;\n" \
-"void main()\n" \
-"{\n" \
-"    gl_Position = model * vec4(aPos, 1.0);\n" \
-"}\n";
+const char *vertexShaderSource = "#version 330 core\n"
+                                 "layout(location = 0) in vec3 aPos;\n"
+                                 "uniform mat4 model;\n"
+                                 "void main()\n"
+                                 "{\n"
+                                 "    gl_Position = model * vec4(aPos, 1.0);\n"
+                                 "}\n";
 
-const char* fragmentShaderSource = \
-"#version 330 core\n" \
-"out vec4 FragColor;\n" \
-"void main()\n" \
-"{\n" \
-"    FragColor = vec4(0.0, 0.5, 1.0, 1.0); // Blue color\n" \
-"}\n";
+const char *fragmentShaderSource =
+    "#version 330 core\n"
+    "out vec4 FragColor;\n"
+    "void main()\n"
+    "{\n"
+    "    FragColor = vec4(0.0, 0.5, 1.0, 1.0); // Blue color\n"
+    "}\n";
 #endif
 
 // Compile and link shaders
@@ -89,7 +92,8 @@ void engine_start(EngineContext *engine_context) {
   // glfw: window creation
   float screen_width = 1920 * 0.5f;
   float screen_height = 1080 * 0.5f;
-  GLFWwindow *window = glfwCreateWindow(screen_width, screen_height, "Steiner View", NULL, NULL);
+  GLFWwindow *window =
+      glfwCreateWindow(screen_width, screen_height, "Steiner View", NULL, NULL);
   if (!window) {
     glfwTerminate();
     ERROR_EXIT("ERROR: Failed to create GLFW window\n");
