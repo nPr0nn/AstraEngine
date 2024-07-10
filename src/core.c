@@ -121,7 +121,7 @@ void engine_start(EngineContext *engine_context) {
 
   // Vertex positions for the quad
   float vertices[] = {
-      -0.5f, 0.5f,  0.0f, // Top-left
+      -0.5f, 1.0f,  0.0f, // Top-left
       0.5f,  0.5f,  0.0f, // Top-right
       0.5f,  -0.5f, 0.0f, // Bottom-right
       -0.5f, -0.5f, 0.0f  // Bottom-left
