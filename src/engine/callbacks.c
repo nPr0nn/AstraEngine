@@ -1,6 +1,5 @@
 
-#include "core.h"
-#include "engine/types.h"
+#include "engine/engine_context.h"
 
 // glfw: whenever the window size changed (by OS or user resize) this callback
 // function executes

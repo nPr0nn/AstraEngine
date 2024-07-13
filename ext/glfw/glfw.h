@@ -25,6 +25,7 @@
     #define _WIN32_WINNT_WINXP      0x0501
 #endif
 
+#define _STDC_NO_VLA_ 1
 #include "src/context.c"
 #include "src/init.c"
 #include "src/input.c"
@@ -58,7 +59,7 @@
         #include "src/x11_window.c"
         #include "src/glx_context.c"
     #endif
-
+ 
     #include "src/linux_joystick.c"
     #include "src/posix_thread.c"
     #include "src/posix_time.c"
@@ -82,8 +83,8 @@
 #endif
 
 #if defined(__APPLE__)
-    #include "src/cocoa_init.m"
-    #include "src/cocoa_joystick.m"
+#include "src/cocoa_init.m"
+#include "src/cocoa_joystick.m"
     #include "src/cocoa_monitor.m"
     #include "src/cocoa_window.m"
     #include "src/cocoa_time.c"

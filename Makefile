@@ -1,8 +1,6 @@
 # Makefile
 
 APP_SRC := src/main.c\
-					 src/callbacks.c\
-					 src/core.c\
 					 ext/glad/glad.c\
 
 CLFAGS   = -Wall
@@ -13,6 +11,7 @@ all: linux
 linux: linux-build linux-run
 linux-build:
 	@echo "Building Linux executable..."
+	mkdir -p builds/linux
 	gcc $(APP_SRC) $(CLFAGS) $(LDFLAGS) -o builds/linux/app
 linux-run:
 	@echo "Running Linux executable..."
@@ -25,6 +24,5 @@ web-build:
 	mv index.js builds/web/index.js
 	mv index.wasm builds/web/index.wasm
 web-run:
-	@echo "Running Web executable..."
 	emrun builds/web/index.html
 	

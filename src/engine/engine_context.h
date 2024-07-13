@@ -4,8 +4,6 @@
 #include "../../ext/glad/glad.h"
 #include "../../ext/glfw/glfw.h"
 
-// #include "../../ext/glfw/zig-out/include/GLFW/glfw3.h"
-
 #include "types.h" 
 #include "utils.h"
 

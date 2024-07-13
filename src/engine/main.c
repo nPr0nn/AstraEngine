@@ -1,5 +1,5 @@
 
-#include "core.h"
+#include "core.c"
 
 typedef void (*main_loop_ptr)(void *);
 #ifdef WEB

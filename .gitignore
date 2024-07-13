@@ -1,18 +1,11 @@
 
-# Zig compiler link
-zig
-
-# GLFW build files
-ext/glfw/zig-out
-ext/glfw/.zig-cache
+# Visual Studio Code
+.vscode 
 
 # Emscripten build files 
 ext/emsdk
 
 # Build files
-builds/cache-dir
-builds/linux
-builds/windows
 builds/web/*.wasm
 builds/web/*.js
 
