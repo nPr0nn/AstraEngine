@@ -3,21 +3,19 @@
 
 ---
 
-Funções: snake_case com o { na mesma linha da função e sem espaço do nome e o parenthesis
-Structs simples (não contém outras struct dentro de si): lower_case com t_ antes do nome
-Structs complexos (contém outras structs dentro de si): CamelCase
-
-Defines: UPPER_CASE com o _ separando as palavras
-Variaveis: lower_case com o _ separando as palavras
-Typedef Variables: lowercase com tudo junto
-
-
 ## Coding Conventions
 
-0. Types renamed: 
-    - uint8_t -> u8, uint16_t -> u16, uint32_t -> u32, uint64_t -> u64, 
-    - int8_t -> i8, int16_t -> i16, int32_t -> i32, int64_t -> i64, 
-    - float -> f32, double -> f64
+0. Types renamed:
+    - `uint8_t` : `u8`
+    - `uint16_t` : `u16`
+    - `uint32_t` : `u32`
+    - `uint64_t` : `u64`
+    - `int8_t` : `i8`
+    - `int16_t` : `i16`
+    - `int32_t` : `i32`
+    - `int64_t` : `i64`
+    - `float` : `f32`
+    - `double` : `f64`
 
 1. **Defines**:
     - Use UPPER_CASE with `_` separating the words.
