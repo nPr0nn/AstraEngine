@@ -3,7 +3,7 @@
 .vscode 
 
 # Emscripten build files 
-ext/emsdk
+src/_ext/emsdk
 
 # Build files
 builds/web/*.wasm

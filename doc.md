@@ -4,8 +4,13 @@
 ---
 
 ## Coding Conventions
+Every part of the game engine should follow these coding conventions.
 
-0. Types renamed:
+0. Use C99 standard
+
+1. ast_[thing] for functions and structs
+
+2. Types renamed:
     - `uint8_t` : `u8`
     - `uint16_t` : `u16`
     - `uint32_t` : `u32`
@@ -17,21 +22,21 @@
     - `float` : `f32`
     - `double` : `f64`
 
-1. **Defines**:
+3. **Defines**:
     - Use UPPER_CASE with `_` separating the words.
     - Example:
       ```c
       #define MAX_BUFFER_SIZE 1024
       ``
        
-2. **Typedef Variables**:
+4. **Typedef Variables**:
     - Use lowercase with all letters together.
     - Example:
       ```c
       typedef unsigned int u8;
       ```
 
-3. **Variables**:
+5. **Variables**:
     - Use lower_case with `_` separating the words.
     - Example:
       ```c
@@ -39,50 +44,50 @@
       f32 delta_time;
       ```
 
-4. **Functions**:
+6. **Functions**:
     - Use snake_case for function names.
     - `{` on the same line as the function name with no space between the name and the parenthesis.
     - Example:
       ```c
-      void initialize_engine(){
+      void astra_engine_init(){
           // function body
       }
       ```
 
-5. **Structs**:
+7. **Structs**:
     - **Simple Structs (do not contain other structs inside it)**:
-      - Use lower_case with `t_` before the name.
+      - Use lower_case
       - Examples:
         ```c
-        typedef struct t_vec2 {
+        typedef struct astra_vec2 {
             f32 x;
             f32 y;
-        } t_vec2;
+        } astra_vec2;
 
-        typedef struct t_rect {
+        typedef struct astra_rect {
             f32 x;
             f32 y;
             f32 width;
             f32 height;
-        } t_rect;
+        } astra_rect;
         
-        typedef struct t_circle {
+        typedef struct astra_circle {
             f32 x;
             f32 y;
             f32 radius;
-        } t_circle;
+        } astra_circle;
         ``` 
     - **Composite Structs (contain other structs inside it)**:
       - Use CamelCase.
       - Examples:
         ```c
-        typedef struct EngineContext {
+        typedef struct astra_EngineContext {
             // other members
-        } EngineContext;
+        } astra_EngineContext;
 
-        typedef struct Renderer {
+        typedef struct astra_Renderer {
             // other members
-        } Renderer;
+        } astra_Renderer;
         ```
         
 #### Directory Structure
