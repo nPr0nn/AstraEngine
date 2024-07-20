@@ -27,7 +27,7 @@ void game_render(GameContext *game_ctx) {
   
   ast_blit_background((ast_color){240, 150, 255, 255});
   
-  ast_color rectColor   = (ast_color){155, 245, 215, 255};
+  ast_color rectColor   = (ast_color){155, 245, 215, 155};
   game_ctx->rect.pos.x += 0.1;
   ast_render_rect(game_ctx->renderer, &game_ctx->rect, rectColor);
 

@@ -92,11 +92,11 @@ static ast_shader_container ast_shader_lib = {
       vec2 center = vec2(0.5, 0.5); // Center of the UV space
       float distance = length(uvs - center);
 
-      float circle_radius = 0.5;
+      float circle_radius   = 0.5;
       float edge_smoothness = 0.01;
 
       float alpha = smoothstep(circle_radius - edge_smoothness, circle_radius, distance);
-      frag_color = vec4(color.rgb, 1.0 - alpha);
+      frag_color = vec4(color.rgb, (1.0 - alpha) * color.a);
     }
   ),
   
@@ -108,8 +108,7 @@ static ast_shader_container ast_shader_lib = {
   //   uniform sampler2D texture_id;
   //
   //   void main() {
-  //     vec4 uv_color = vec4(uvs.x, uvs.y, 0.0, 1.0);
-  //     frag_color = texture(texture_id, uvs) * uv_color;
+  //     frag_color = texture(texture_id, uvs) * color;
   //   }
   // ),
  
