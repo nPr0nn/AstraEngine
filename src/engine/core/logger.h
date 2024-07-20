@@ -1,18 +1,6 @@
 #ifndef LOGGER_H
 #define LOGGER_H
 
-// Platform Agnostic Debug Break
-#ifdef _WIN32
-#define DEBUG_BREAK() __debugbreak()
-#define EXPORT_FN __declspec(dllexport)
-#elif __linux__
-#define DEBUG_BREAK() __builtin_trap()
-#define EXPORT_FN
-#elif __APPLE__
-#define DEBUG_BREAK() __builtin_trap()
-#define EXPORT_FN
-#endif
-
 #include <stdio.h>
 
 // Terminal Debug Color
@@ -37,8 +25,6 @@
 #define LOG_ERROR_EXIT(S, ...) do { LOG_ERROR(S, ##__VA_ARGS__); exit(1); } while(0)
 #define LOG_ERROR_RETURN(R, S, ...) do { LOG_ERROR(S, ##__VA_ARGS__); return R; } while(0)
 
-
-// Assert
-// #define LOG_ASSERT(C, ...) if (!(C)) { LOG_ERROR("Assert failed: " __VA_ARGS__); DEBUG_BREAK(); }
+// TODO: Assert
 
 #endif

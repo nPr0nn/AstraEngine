@@ -50,4 +50,93 @@ static inline u32 ast_create_shader(const char *vertex_code, const char *fragmen
   return shader_program;
 }
 
+//------------------------------------------------------------------------------------------------
+// Core Shader Library - Multiple Shaders Code
+// doing strange macro and struc trick (maybe problems ?)
+
+#define GLSL(src) "#version 330 core\n" #src
+#define WEBGL(src) #src
+
+typedef struct ast_shader_container {
+  const char* default_vert_shader;
+  const char* default_frag_shader;
+  const char* web_default_vert_shader;
+  const char* web_default_frag_shader; 
+} ast_shader_container;
+
+static ast_shader_container ast_shader_lib = {
+  
+  .default_vert_shader = GLSL(
+    layout (location = 0) in vec3 a_pos;
+    layout (location = 1) in vec2 a_uvs;
+
+    out vec2 uvs;
+
+    uniform mat4 projection;
+    uniform mat4 model;
+
+    void main() {
+        uvs = a_uvs;
+        gl_Position = projection * model * vec4(a_pos, 1.0);
+    }
+  ),
+
+  .default_frag_shader = GLSL(
+    out vec4 frag_color;
+    in  vec2 uvs;
+
+    uniform vec4      color;
+    uniform sampler2D texture_id;
+
+    void main() {
+      vec2 center = vec2(0.5, 0.5); // Center of the UV space
+      float distance = length(uvs - center);
+
+      float circle_radius = 0.5;
+      float edge_smoothness = 0.01;
+
+      float alpha = smoothstep(circle_radius - edge_smoothness, circle_radius, distance);
+      frag_color = vec4(color.rgb, 1.0 - alpha);
+    }
+  ),
+  
+  // .default_frag_shader = GLSL(
+  //   out vec4 frag_color;
+  //   in  vec2 uvs;
+  //
+  //   uniform vec4      color;
+  //   uniform sampler2D texture_id;
+  //
+  //   void main() {
+  //     vec4 uv_color = vec4(uvs.x, uvs.y, 0.0, 1.0);
+  //     frag_color = texture(texture_id, uvs) * uv_color;
+  //   }
+  // ),
+ 
+  .web_default_vert_shader = WEBGL(
+    attribute vec3 a_pos;
+    attribute vec2 a_uvs;
+    varying   vec2 uvs;
+    uniform   mat4 projection;
+    uniform   mat4 model;
+
+    void main() {
+      uvs = a_uvs;
+      gl_Position = projection * model * vec4(a_pos, 1.0);
+    }
+  ),
+
+  .web_default_frag_shader = WEBGL(
+    precision mediump float;
+    varying   vec2 uvs;
+    uniform   sampler2D texture_id;
+    uniform   vec4 color;
+    
+    void main() {
+      gl_FragColor = texture2D(texture_id, uvs) * color;
+    }
+  ),
+
+};
+
 #endif

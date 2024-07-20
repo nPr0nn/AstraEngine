@@ -5,14 +5,17 @@
 typedef struct GameContext {
   ast_Window *window;
   ast_Renderer *renderer;
-
+ 
   ast_rect rect;
 } GameContext;
 
 void game_init(GameContext *game_ctx) {
-  game_ctx->window   = ast_init_window("Astra Engine", 800, 600);
-  game_ctx->renderer = ast_init_renderer(game_ctx->window);
-  game_ctx->rect = (ast_rect){.pos = {400, 300}, .dim = {100, 100}};
+  i32 w = 800, h = 600;
+
+  game_ctx->window   = ast_init_window("Astra Framework", w, h);
+  game_ctx->renderer = ast_init_renderer(w, h);
+  
+  game_ctx->rect = (ast_rect){.pos = {0, h/2.0f}, .dim = {100, 100}};
   return;
 }
 
@@ -20,15 +23,15 @@ void game_update(GameContext *game_ctx) { return; }
 
 void game_render(GameContext *game_ctx) {
   // Blit background color to screen
-  ast_begin_render(game_ctx->window, game_ctx->renderer);
+  ast_begin_render(game_ctx->window);
   
   ast_blit_background((ast_color){240, 150, 255, 255});
   
-  ast_color rectColor = (ast_color){255, 255, 255, 255};
+  ast_color rectColor   = (ast_color){155, 245, 215, 255};
   game_ctx->rect.pos.x += 0.1;
-  ast_render_rect(game_ctx->renderer, game_ctx->rect, rectColor);
+  ast_render_rect(game_ctx->renderer, &game_ctx->rect, rectColor);
 
-  ast_end_render(game_ctx->window, game_ctx->renderer);
+  ast_end_render(game_ctx->window);
   return;
 }
 

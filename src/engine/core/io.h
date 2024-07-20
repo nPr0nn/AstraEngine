@@ -1,6 +1,7 @@
 #ifndef IO_H
 #define IO_H
 
+#include <errno.h>
 #include "utils.h"
 
 typedef struct file {
